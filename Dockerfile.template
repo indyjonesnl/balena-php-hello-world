@@ -1,0 +1,15 @@
+# Pull base image depending on the machine name
+FROM resin/%%RESIN_MACHINE_NAME%%-python
+
+# Enable systemd
+ENV INITSYSTEM ON
+
+# Install Python
+RUN apt-get update && apt-get install -y python \
+ && rm -rf /var/lib/apt/lists/*
+
+# Copy current directory to /app
+COPY . /app
+
+# Run python script when container lands on device
+CMD ["python", "/app/hello.py"]
