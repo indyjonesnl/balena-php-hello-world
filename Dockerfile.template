@@ -8,8 +8,11 @@ ENV INITSYSTEM ON
 RUN apt-get update && apt-get install -y python \
  && rm -rf /var/lib/apt/lists/*
 
+# Define container's working directory
+WORKDIR /usr/src/app
+
 # Copy current directory to /usr/src/app
 COPY . /usr/src/app
 
 # Run python script when container lands on device
-CMD ["python", "/app/hello.py"]
+CMD ["python", "hello.py"]
