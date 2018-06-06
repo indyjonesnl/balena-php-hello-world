@@ -1,3 +1,3 @@
-#!/usr/bin/python
+<?php
 
-print ("hello python!")
+echo 'hello php!';
